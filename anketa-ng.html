@@ -1,0 +1,68 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i|Roboto:300,400,700&amp;subset=latin-ext" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/site.css">
+   
+  </head>
+  <body ng-app="ankete" ng-controller="main">
+
+    <div id="poll-container">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="title">
+              Anketa
+            </div>
+            <div class="question-title">
+                {{ responseData.question }}
+            </div>
+
+            <!-- Uporabnik se ni glasoval -->
+            <section ng-show="!hasVoted">
+              <div class="questions-container" ng-repeat="question in responseData.answers" >
+                <input ng-model="$parent.clickedAnswer" type="radio" name="questions-group" value="{{question.id}}" id="{{question.id}}"><label for="{{question.id}}">{{ question.answer }}</label>
+              </div>
+              <div class="button-container" ng-click="vote()">
+                <div class="text">Glasuj</div>
+              </div>
+            </section>
+
+            <!-- Uporabnik je glasoval -->
+            <section ng-show="hasVoted">
+              <div class="questions-container">
+                <div class="d-table-row" ng-repeat="answer in responseData.answers">
+                  <div class="d-table-cell pr-2">{{ ((((answer.times | number) / voteSum) | number) * 100) | number : 0 }}%</div>
+                  <div class="d-table-cell w-100">
+                    <div class="progress">
+                      <div class="progress-bar" ng-style="{width: ((answer.times | number) /voteSum * 100) + '%' }">
+                        {{ answer.answer }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="sum-votes-container">
+                <div class="text">Skupaj število glasov: {{ voteSum }}</div>
+              </div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.5/angular.min.js"></script>
+    <script src="js/urlParams.js"></script>
+    <script src="js/main-ng.js"></script>
+    
+  </body>
+</html>

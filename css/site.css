@@ -1,0 +1,79 @@
+#poll-container  {
+  background-color: #e4a816;
+  color: #fff;
+  padding: 10px 10px 30px 10px;
+  margin: 5px;
+}
+
+#poll-container .title {
+  font-size: 1.7em;
+  font-weight: 300;
+}
+
+#poll-container .question-title {
+  font-size: 1.1em;
+  font-weight: 600;
+  margin: 20px 0;
+}
+
+#poll-container label {
+  font-size: 0.9em;
+  display: block;
+}
+
+#poll-container .button-container {
+  margin-top: 25px;
+  padding: 10px 30px;
+  width: 100%;
+  border: 1px solid #fff;
+  text-align: center;
+  cursor: pointer;
+}
+
+#poll-container .sum-votes-container {
+  margin-top: 20px;
+  padding: 10px 30px;
+  width: 100%;
+  border: 1px solid #fff;
+  text-align: center;
+}
+
+input[type='radio'] {
+  position: absolute;
+  visibility: hidden;
+}
+
+input[type='radio'] + label {
+  margin: 0 0 5px 0;
+  clear: none;
+  padding: 5px 0 4px 24px;
+  cursor: pointer;
+  background: url(../img/checkbox-unchecked.png) left center no-repeat; 
+}
+
+input[type='radio']:checked + label {
+  background-image: url(../img/checkbox-checked.png);
+}
+
+.progress {
+  background-color: #D97F18;
+  height: 30px;
+  margin-bottom: 5px;
+  border-radius: 0;
+}
+
+.progress-bar {
+  background-color: #CF4500;
+  text-align: left;
+  padding-left: 5px;
+}
+
+@media screen and (max-width: 360px) {
+  body {
+    font-size: 0.8em;
+  }
+
+  .progress-bar {
+    font-size: 0.9em;
+  }
+}
