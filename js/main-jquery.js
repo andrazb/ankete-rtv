@@ -64,8 +64,6 @@
         },
         error: function(data) {
           console.log('error');
-          localStorage.setItem('Voted' + anketa.pollId, '1');
-          anketa.getPollResults();
         }
       });
     }
